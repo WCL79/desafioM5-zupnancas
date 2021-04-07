@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Data//O @Data contem todos
 @NoArgsConstructor//Construtor sem argumentos
@@ -15,9 +17,19 @@ import java.time.LocalTime;
 public class Credito {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private Double valor;
-    private String descricao;
-    private LocalTime dataDeEntrada;
 
+    @Column(length = 150)
+    private String descricacao;
+    private LocalDate dataDeEntrada;
+
+    @ManyToOne(optional = false)
+    private Saldo saldo;
+
+    @ManyToMany
+    private List<Categoria> categoria;
 
 }

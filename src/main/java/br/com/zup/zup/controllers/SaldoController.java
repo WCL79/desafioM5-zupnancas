@@ -22,7 +22,7 @@ public class SaldoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Saldo cadastrarSaldo(@RequestBody @Valid RegistrarSaldoDTO cadastrarSaldo) {
+    public Saldo registrarSaldo(@RequestBody @Valid RegistrarSaldoDTO cadastrarSaldo) {
         return saldoService.registrarSaldo(modelMapper.map(cadastrarSaldo, Saldo.class));
     }
 

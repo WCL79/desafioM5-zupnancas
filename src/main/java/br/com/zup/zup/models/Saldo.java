@@ -16,7 +16,6 @@ public class Saldo {
     @Id
     @Column(length = 20)
     private String cpf;
-
     private Double valor;
     private Double limite;
 

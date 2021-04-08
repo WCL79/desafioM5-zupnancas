@@ -17,12 +17,8 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(length = 50)
     private String nome;
-
-    @Column(length = 255)
-    private String descricacao;
-    private LocalDate dataDeEntrada;
-
-    @ManyToOne(optional = false)
-    private Saldo saldo;
 }
+

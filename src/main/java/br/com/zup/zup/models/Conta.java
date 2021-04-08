@@ -24,6 +24,7 @@ public class Conta {
     @Column(length = 255)
     private String descricacao;
     private LocalDate dataDeSaida;
+    private LocalDate dataDeVencimento;
     private Status status;
 
     @ManyToOne(optional = false)

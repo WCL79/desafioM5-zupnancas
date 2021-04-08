@@ -1,4 +1,4 @@
-package br.com.zup.zup.dto;
+package br.com.zup.zup.dto.saldo;
 
 
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Data//O @Data contem todos
 @NoArgsConstructor//Construtor sem argumentos
 @AllArgsConstructor//Construtor com todos argumentos
-public class SaldoDTO {
+public class RegistrarSaldoDTO {
 
     @NotNull(message = "O campo cpf deve ser informado!")
     @NotEmpty(message = "o campo cpf está vazio")

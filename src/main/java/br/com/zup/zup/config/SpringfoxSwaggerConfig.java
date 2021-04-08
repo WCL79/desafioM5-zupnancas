@@ -14,12 +14,11 @@ public class SpringfoxSwaggerConfig {
 
     @Bean
     public Docket aDocket(){
-        return new Docket(DocumentationType.SWAGGER_2.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
-
 
     }
 }

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @Data//O @Data contem todos
@@ -22,7 +21,7 @@ public class Credito {
     private Integer id;
     private Double valor;
 
-    @Column(length = 150)
+    @Column(length = 255)
     private String descricacao;
     private LocalDate dataDeEntrada;
 

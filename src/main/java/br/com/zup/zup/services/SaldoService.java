@@ -11,7 +11,7 @@ import java.util.Optional;
 public class SaldoService {
 
     @Autowired
-    private SaldoRepository saldoRepository;
+    private final SaldoRepository saldoRepository;
 
 
     public SaldoService(SaldoRepository saldoRepository) {

@@ -22,15 +22,14 @@ public class SaldoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Saldo gravarNovoSaldo(@RequestBody @Valid RegistrarSaldoDTO cadastrarSaldo) {
-        Saldo saldo = saldoService.registrarSaldo(modelMapper.map(cadastrarSaldo, Saldo.class));
-        return saldo;
+    public Saldo cadastrarSaldo(@RequestBody @Valid RegistrarSaldoDTO cadastrarSaldo) {
+        return saldoService.registrarSaldo(modelMapper.map(cadastrarSaldo, Saldo.class));
     }
 
     @GetMapping("/{cpf}/")
     public Saldo buscarSaldoPorCpf(@PathVariable Saldo cpf){
         Saldo saldo = saldoService.buscarPorCpf(cpf);
-        SaldoController saldoController = modelMapper.map(saldo, SaldoController.class);
+        modelMapper.map(saldo, SaldoController.class);
         return saldo;
     }
 }

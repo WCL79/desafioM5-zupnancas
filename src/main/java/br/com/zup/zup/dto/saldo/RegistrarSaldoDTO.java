@@ -1,6 +1,7 @@
 package br.com.zup.zup.dto.saldo;
 
 
+import br.com.zup.zup.models.Saldo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,4 +27,13 @@ public class RegistrarSaldoDTO {
     @NotNull(message = "O campo limite deve ser informado!")
     @Min(value = 0, message = "o valor do limite deve ser maior do que zero!")
     private Double limite;
+
+    public Saldo converterSaldoDTOParaSaldo() {
+        Saldo saldo = new Saldo();
+        saldo.setCpf(this.cpf);
+        saldo.setValor(this.valor);
+        saldo.setLimite(this.limite);
+
+        return saldo;
+    }
 }

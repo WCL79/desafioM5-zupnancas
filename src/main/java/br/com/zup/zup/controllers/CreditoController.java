@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("creditos/")
@@ -22,8 +23,13 @@ public class CreditoController {
     private ModelMapper modelMapper;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.CREATED)//usar padrão dto na sala de aula
     public Credito registrarCredito(@RequestBody @Valid RegistrarCreditoDTO registrarCreditoDTO){
-        return creditoService.adicionarNovoCredito(modelMapper.map(registrarCreditoDTO, Credito.class));
+        return creditoService.cadastrarCredito(modelMapper.map(registrarCreditoDTO, Credito.class));
+    }
+
+    @GetMapping
+    public List<Credito> buscarTodos() {
+        return creditoService.pesquisarTodosCreditos();
     }
 }

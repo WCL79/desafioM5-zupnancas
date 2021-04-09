@@ -21,14 +21,14 @@ public class Credito {
     private Integer id;
     private Double valor;
 
-    @Column(length = 255)
-    private String descricacao;
+    @Column(length = 150)
+    private String descricao;
+    @Column(length = 150)
     private LocalDate dataDeEntrada;
 
     @ManyToOne(optional = false)
     private Saldo saldo;
 
     @ManyToMany
-    private List<Categoria> categoria;
-
+    private List<Categoria> categorias;
 }

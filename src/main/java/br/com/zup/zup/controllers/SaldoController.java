@@ -23,7 +23,7 @@ public class SaldoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Saldo registrarSaldo(@RequestBody @Valid RegistrarSaldoDTO cadastrarSaldo) {
-        return saldoService.registrarSaldo(modelMapper.map(cadastrarSaldo, Saldo.class));
+        return saldoService.registrarSaldo(cadastrarSaldo.converterSaldoDTOParaSaldo());
     }
 
     @GetMapping("/{cpf}/")

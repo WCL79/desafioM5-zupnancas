@@ -1,5 +1,6 @@
 package br.com.zup.zup.services;
 
+import br.com.zup.zup.models.Conta;
 import br.com.zup.zup.models.Credito;
 import br.com.zup.zup.models.Saldo;
 import br.com.zup.zup.repositories.SaldoRepository;
@@ -33,5 +34,15 @@ public class SaldoService {
         valor += credito.getValor();
         saldo.setValor(valor);
         registrarSaldo(saldo);
+    }
+
+    public void debitarSaldo(Conta contaAntiga) {
+        Saldo sadoRecebe = buscarPorCpf(contaAntiga.getSaldo());
+        Double limite = sadoRecebe.getLimite() + sadoRecebe.getValor();
+        if(limite > contaAntiga.getValor()){
+            Double valorAtualizado = sadoRecebe.getValor() - contaAntiga.getValor();
+            sadoRecebe.setValor(valorAtualizado);
+            saldoRepository.save(sadoRecebe);
+        }
     }
 }

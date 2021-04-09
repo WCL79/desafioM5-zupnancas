@@ -5,6 +5,8 @@ import br.com.zup.zup.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoriaService {
 
@@ -23,3 +25,4 @@ public class CategoriaService {
         return categoriaRepository.findAll();
     }
 }
+

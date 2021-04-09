@@ -5,6 +5,7 @@ import br.com.zup.zup.models.Conta;
 import br.com.zup.zup.repositories.ContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ public class ContaService {
     @Autowired
     private  SaldoService saldoService;
 
+    @Transactional
     public Conta regitrarConta(Conta conta) {
         consultarSituacao(conta.getStatus());
         return contaRepository.save(conta);
@@ -32,5 +34,20 @@ public class ContaService {
         Optional<Conta> optionalConta = contaRepository.findById(conta.getId());
 
         return optionalConta.orElseThrow( () -> new RuntimeException("Id não existe!") );
+    }
+    public Optional<Conta> buscarPorId(Conta id) {
+        return contaRepository.findById(id.getId());
+    }
+
+    public Conta atualizarConta(Conta conta) {
+        Conta contaAntiga =  pesquisarContaPorId(conta);
+        if(conta.getStatus().equals(Status.PAGO)){
+          saldoService.debitarSaldo(contaAntiga);
+          contaAntiga.setStatus(conta.getStatus());
+          contaRepository.save(contaAntiga);
+        }
+        contaAntiga.setStatus(conta.getStatus());
+        contaRepository.save(contaAntiga);
+        return contaAntiga;
     }
 }

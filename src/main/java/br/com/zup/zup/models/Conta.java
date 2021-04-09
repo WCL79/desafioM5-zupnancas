@@ -23,7 +23,7 @@ public class Conta {
 
     @Column(length = 255)
     private String descricacao;
-    private LocalDate dataDeSaida;
+    private LocalDate dataDeEntrada;
     private LocalDate dataDeVencimento;
     private Status status;
 

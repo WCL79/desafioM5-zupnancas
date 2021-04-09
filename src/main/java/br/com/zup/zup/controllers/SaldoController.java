@@ -26,7 +26,13 @@ public class SaldoController {
         return saldoService.registrarSaldo(cadastrarSaldo.converterSaldoDTOParaSaldo());
     }
 
-    @GetMapping("/{cpf}/")
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Saldo> visualizarTodasContas() {
+        return saldoService.obterTodosSaldos();
+    }
+
+    @GetMapping("{cpf}/")
     public Saldo buscarSaldoPorCpf(@PathVariable Saldo cpf){
         Saldo saldo = saldoService.buscarPorCpf(cpf);
         modelMapper.map(saldo, SaldoController.class);

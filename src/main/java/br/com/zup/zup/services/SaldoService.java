@@ -28,6 +28,14 @@ public class SaldoService {
         return optionalSaldo.orElseThrow( () -> new RuntimeException("Cpf não existe!") );
     }
 
+    public Iterable<Saldo> obterTodosSaldos() {
+        if (saldoRepository.count() == 0) {
+            throw new RuntimeException("Nenhum saldo!");
+        }
+
+        return saldoRepository.findAll();
+    }
+
     public void atualizarSaldo(Credito credito){
         Saldo saldo  = buscarPorCpf(credito.getSaldo());
         Double valor = saldo.getValor();

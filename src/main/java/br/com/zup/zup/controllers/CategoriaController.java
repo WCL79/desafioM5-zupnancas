@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("categorias/")
@@ -24,10 +24,19 @@ public class CategoriaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public RegistrarCategoriaDTO registrarCategoria(@RequestBody @Valid Categoria categoria,
-                                                    RegistrarCategoriaDTO registrarCategoria){
-        modelMapper.map(categoria, RegistrarCategoriaDTO.class);
-        return registrarCategoria;
+    public Categoria registrarCategoria(@RequestBody @Valid RegistrarCategoriaDTO registrarCategoria){
+       return categoriaService.registrarCategoria(modelMapper.map(registrarCategoria, Categoria.class));
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Categoria> visualizarTodasCategorias() {
+        return categoriaService.obterTodasCategorias();
+    }
+
+    @DeleteMapping("{id}/")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removerCategoria(@PathVariable Integer id) {
+        categoriaService.deletarCategoria(id);
+    }
 }

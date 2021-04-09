@@ -29,7 +29,7 @@ public class RegistrarContaDTO {
     private String descricacao;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataDeSaida;
+    private LocalDate dataDeEntrada;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeVencimento;
 
@@ -49,7 +49,7 @@ public class RegistrarContaDTO {
         conta.setSaldo(saldo);
         conta.setDescricacao(this.descricacao);
         conta.setValor(this.valor);
-        conta.setDataDeSaida(this.dataDeSaida);
+        conta.setDataDeEntrada(this.dataDeEntrada);
         conta.setDataDeVencimento(this.dataDeVencimento);
         conta.setStatus(this.status);
         return conta;

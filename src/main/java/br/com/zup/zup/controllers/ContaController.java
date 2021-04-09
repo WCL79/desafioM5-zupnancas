@@ -27,8 +27,9 @@ public class ContaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Conta registrarConta(@RequestBody @Valid RegistrarContaDTO registrarContaDTO){
-        return contaService.regitrarConta(registrarContaDTO.converterDTOParaModel());
+    public RegistrarContaDTO registrarConta(@RequestBody @Valid RegistrarContaDTO registrarContaDTO){
+        Conta conta = contaService.regitrarConta(registrarContaDTO.converterDTOParaModel());
+        return RegistrarContaDTO.converterModelParaDTO(conta);
     }
 
     @PutMapping

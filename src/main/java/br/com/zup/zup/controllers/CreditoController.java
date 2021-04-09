@@ -19,14 +19,12 @@ public class CreditoController {
     @Autowired
     private CreditoService creditoService;
 
-    @Autowired
-    private ModelMapper modelMapper;
-
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)//usar padrão dto na sala de aula
-    public Credito registrarCredito(@RequestBody @Valid RegistrarCreditoDTO registrarCreditoDTO){
-        return creditoService.cadastrarCredito(modelMapper.map(registrarCreditoDTO.converterCadastrarCreditoDtoParaCredito(), Credito.class));
+    public RegistrarCreditoDTO registrarCredito(@RequestBody @Valid RegistrarCreditoDTO registrarCreditoDTO){
+        Credito credito = creditoService.cadastrarCredito(registrarCreditoDTO.converterCadastrarCreditoDtoParaCredito());
+        return RegistrarCreditoDTO.converterModelParaDTO(credito);
     }
 
     @GetMapping

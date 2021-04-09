@@ -5,7 +5,6 @@ import br.com.zup.zup.models.Conta;
 import br.com.zup.zup.repositories.ContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -18,9 +17,10 @@ public class ContaService {
     @Autowired
     private  SaldoService saldoService;
 
-    @Transactional
+
     public Conta regitrarConta(Conta conta) {
         consultarSituacao(conta.getStatus());
+        saldoService.buscarPorCpf(conta.getSaldo());
         return contaRepository.save(conta);
     }
 

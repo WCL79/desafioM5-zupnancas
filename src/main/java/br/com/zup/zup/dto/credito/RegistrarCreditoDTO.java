@@ -43,4 +43,13 @@ public class RegistrarCreditoDTO {
         credito.setCategorias(this.categorias);
         return credito;
     }
+
+    public static  RegistrarCreditoDTO converterModelParaDTO(Credito credito){
+        RegistrarCreditoDTO registrarCreditoDTO = new RegistrarCreditoDTO(
+                credito.getValor(),
+                credito.getDescricao(),
+                credito.getSaldo().getCpf(),
+                credito.getCategorias());
+        return registrarCreditoDTO;
+    }
 }

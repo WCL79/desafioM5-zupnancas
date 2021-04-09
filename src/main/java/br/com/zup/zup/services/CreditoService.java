@@ -5,7 +5,7 @@ import br.com.zup.zup.models.Credito;
 import br.com.zup.zup.repositories.CreditoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,6 +26,7 @@ public class CreditoService {
 
     public Credito cadastrarCredito(Credito credito) {
         credito.setDataDeEntrada(LocalDate.now());
+        saldoService.buscarPorCpf(credito.getSaldo());
         Credito novoCredito = creditoRepository.save(credito);
         saldoService.atualizarSaldo(novoCredito);
         return novoCredito;

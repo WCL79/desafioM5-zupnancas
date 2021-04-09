@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+
 
 @Data//O @Data contem todos
 @NoArgsConstructor//Construtor sem argumentos
@@ -21,4 +21,3 @@ public class Categoria {
     @Column(length = 50)
     private String nome;
 }
-

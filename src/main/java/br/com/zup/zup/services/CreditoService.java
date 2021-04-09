@@ -24,7 +24,6 @@ public class CreditoService {
         this.saldoService = saldoService;
     }
 
-    @Transactional
     public Credito cadastrarCredito(Credito credito) {
         credito.setDataDeEntrada(LocalDate.now());
         Credito novoCredito = creditoRepository.save(credito);

@@ -24,7 +24,7 @@ public class RegistrarCreditoDTO {
 
     @NotNull(message = "O campo descricacao não foi informado")
     @NotEmpty(message = "O descricacao está vazio!")
-    private String descricacao;
+    private String descricao;
 
     @NotNull(message = "O campo cpf não foi informado")
     @NotEmpty(message = "O cpf está vazio!")
@@ -36,7 +36,7 @@ public class RegistrarCreditoDTO {
     public Credito converterCadastrarCreditoDtoParaCredito() {
         Credito credito = new Credito();
         credito.setValor(this.valor);
-        credito.setDescricao(this.descricacao);
+        credito.setDescricao(this.descricao);
         Saldo saldo = new Saldo();
         saldo.setCpf(this.cpf);
         credito.setSaldo(saldo);

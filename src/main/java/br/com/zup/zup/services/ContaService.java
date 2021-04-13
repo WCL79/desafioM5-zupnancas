@@ -35,8 +35,8 @@ public class ContaService {
 
         return optionalConta.orElseThrow( () -> new RuntimeException("Id não existe!") );
     }
-    public Optional<Conta> buscarPorId(Conta id) {
-        return contaRepository.findById(id.getId());
+    public Iterable<Conta> buscaPorStatus(Status status) {
+        return contaRepository.findByStatus(status);
     }
 
     public Conta atualizarConta(Conta conta) {

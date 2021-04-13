@@ -55,6 +55,20 @@ public class RegistrarContaDTO {
         return conta;
     }
 
+    /*
+    public RegistrarContaDTO converterDTOParaModel(Saldo saldo, Conta conta){
+        RegistrarContaDTO contaDTO = new RegistrarContaDTO(
+                saldo.getCpf(),
+                conta.getValor(),
+                conta.getSaldo(),
+                conta.getDescricacao(),
+                conta.getDataDeEntrada(),
+                conta.getDataDeVencimento(),
+                conta.getStatus());
+        return contaDTO;
+
+    }*/
+
     public static RegistrarContaDTO converterModelParaDTO(Conta conta){
         RegistrarContaDTO registrarContaDTO = new RegistrarContaDTO (
                 conta.getValor(),

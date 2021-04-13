@@ -2,7 +2,9 @@ package br.com.zup.zup.controllers;
 
 import br.com.zup.zup.dto.conta.AtulizarContaDTO;
 import br.com.zup.zup.dto.conta.RegistrarContaDTO;
+import br.com.zup.zup.enumerator.Status;
 import br.com.zup.zup.models.Conta;
+import br.com.zup.zup.models.Saldo;
 import br.com.zup.zup.services.ContaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
@@ -36,6 +38,12 @@ public class ContaController {
     public ResponseEntity<Conta> atualizar(@RequestBody AtulizarContaDTO atulizarContaDTO) {
        Conta conta = contaService.atualizarConta(modelMapper.map(atulizarContaDTO, Conta.class));
        return ResponseEntity.ok().body(conta);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Conta> visualizarStuacao(@RequestParam (name = "status")Status status) {
+        return contaService.buscaPorStatus(status);
     }
 }
 
